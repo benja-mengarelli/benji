@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Te amo</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #710075f6;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #b90b39b9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(238, 0, 0);
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            user-select: none;
+            position: relative;
+            overflow: visible;
+        }
+
+        .heart {
+            font-size: 7rem;
+            z-index: 1;
+        }
+
+        .word-float {
+            position: absolute;
+            font-size: 1.2rem;
+            color: white;
+            background-color: pink;
+            border-radius: 25px;
+            padding: 5px 10px;
+            z-index: 2;
+            pointer-events: none;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="circle" onclick="mostrarPalabra()">
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        const palabras = [
+            "Te amo", 
+            "Sos hermosa", 
+            "Que linda estas hoy", 
+            "Gracias x existir", 
+            "Ñoquis", 
+            "Nunca cambies", 
+            "❤️❤️❤️❤️", 
+            "Que linda sonrisa", 
+            "Te extraño", 
+            "Hasta la luna, siempre",
+            "Es linda la vida contigo",
+            "sos una personita muy especial",
+            "Gracias x elegirme",
+            "No te olvides mi termo hdp"];
+
+        function mostrarPalabra() {
+            const circle = document.querySelector('.circle');
+            const palabra = document.createElement('div');
+            palabra.classList.add('word-float');
+            palabra.textContent = palabras[Math.floor(Math.random() * palabras.length)];
+
+            palabra.style.left = '50%';
+            palabra.style.top = '50%';
+            palabra.style.transform = 'translate(-50%, -50%)';
+
+            
+            // X: de -80 a +80 px (izquierda o derecha)
+            const deltaX = (Math.random() * 250) - 125;
+            // Y: de -100 a -50 px (siempre hacia arriba)
+            const deltaY = - (80 + Math.random() * 80);
+
+            const animName = `flotar${Date.now()}${Math.floor(Math.random() * 1000)}`;
+
+            // Creamos los keyframes dinámicamente
+            const styleSheet = document.styleSheets[0];
+            const keyframes =
+                `@keyframes ${animName} {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) translate(0, 0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px);
+            }
+        }`;
+
+            // Insertamos la animación en el stylesheet
+            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+            // Asignamos la animación al elemento
+            palabra.style.animation = `${animName} 1.5s ease-out forwards`;
+
+            circle.appendChild(palabra);
+
+            // Eliminamos el elemento al terminar la animación
+            palabra.addEventListener('animationend', () => {
+                palabra.remove();
+            });
+        }
+    </script>
+
+</body>
+
+</html>
