@@ -5,10 +5,10 @@
 }
 
 header {
-    width: 100%;
-    position: absolute;
+    width: 100vw;
+    position: fixed;
     top: 0;
-    background-color: #59015cf6;
+    z-index: 2;
     border-radius: 0 0 25px 25px;
 }
 
@@ -21,12 +21,13 @@ header nav ul {
 
 header nav ul li {
     list-style: none;
-    margin: 20px;
+    margin: 0 20px;
     padding: 20px;
     border-radius: 25%;
     border-bottom: 1px solid #b90b39b9;
     transition: transform 1s ease-in;
     display: inline-block;
+    background-color: #59015cf6;
 }
 
 header nav ul li a {
@@ -38,7 +39,6 @@ header nav ul li:hover {
     transform: rotateY(360deg);
     border-top: 1px solid #b90b39b9;
 }
-
 
 body {
     background: linear-gradient(270deg, #eb10f3f6, #730275f6, #f82bfff6, #cc87cff6);
@@ -59,7 +59,6 @@ body {
         background-position: 0% 50%;
     }
 }
-
 
 .body-index {
     margin: 0;
@@ -105,7 +104,6 @@ body {
     animation-timing-function: ease-out;
 }
 
-
 .body-nosotros {
     margin: 0;
     min-height: 100vh;
@@ -113,6 +111,21 @@ body {
     padding: 2rem;
 }
 
+.body-nosotros h2 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px #000000;
+    padding-top: 10vh;
+}
+
+.body-nosotros h3 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px #000000;
+    padding: 5rem;
+}
 
 .tarjetas {
     margin-top: 5rem;
@@ -167,6 +180,7 @@ body {
 
     .tarjeta:nth-child(even) {
         grid-column: 1;
+        transform: translateY(0);
     }
 }
 
