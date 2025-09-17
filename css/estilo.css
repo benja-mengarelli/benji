@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #59015cf6;
+    border-radius: 0 0 25px 25px;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+header nav ul li {
+    list-style: none;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 25%;
+    border-bottom: 1px solid #b90b39b9;
+    transition: transform 1s ease-in;
+    display: inline-block;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+header nav ul li:hover {
+    transform: rotateY(360deg);
+    border-top: 1px solid #b90b39b9;
+}
+
+
+body {
+    background: linear-gradient(270deg, #eb10f3f6, #730275f6, #f82bfff6, #cc87cff6);
+    background-size: 600% 600%;
+    animation: moverFondo 15s ease infinite;
+}
+
+@keyframes moverFondo {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.body-index {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #710075f6;
+    font-family: sans-serif;
+}
+
+.circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #b90b39b9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(238, 0, 0);
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    position: relative;
+    overflow: visible;
+}
+
+.heart {
+    font-size: 7rem;
+    z-index: 1;
+}
+
+.word-float {
+    position: absolute;
+    font-size: 1.2rem;
+    color: white;
+    background-color: pink;
+    border-radius: 25px;
+    padding: 5px 10px;
+    z-index: 2;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+
+.body-nosotros {
+    margin: 0;
+    min-height: 100vh;
+    font-family: sans-serif;
+    padding: 2rem;
+}
+
+
+.tarjetas {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    justify-items: center;
+}
+
+.tarjeta {
+    background: #000000;
+    color: white;
+    padding: 1rem;
+    border-radius: 25px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 1rem;
+}
+
+/* Alternancia */
+.tarjeta:nth-child(odd) {
+    grid-column: 1;
+}
+
+.tarjeta:nth-child(even) {
+    grid-column: 2;
+    transform: translateY(150px);
+}
+
+@media (max-width: 770px) {
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        grid-column: auto;
+    }
+
+    .tarjeta:nth-child(odd) {
+        grid-column: 1;
+    }
+
+    .tarjeta:nth-child(even) {
+        grid-column: 1;
+    }
+}
+

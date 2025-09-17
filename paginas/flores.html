@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/estilo.css">
+    <title>Te amo</title>
+</head>
+<header>
+    <nav>
+        <ul>
+            <li><a href="../paginas/flores.html">Juegos 🎳</a></li>
+            <li><a href="">Feliz aniversario ❤️</a></li>
+            <li><a href="../index.html">Te amo 🐬</a></li>
+            <li><a href="">Nosotros 💏</a></li>
+        </ul>
+    </nav>
+</header>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 100vh;
+        margin: 0;
+        background: black;
+        overflow: hidden;
+    }
+
+    /* Estrella fugaz */
+    .shooting-star {
+        position: absolute;
+        width: 150px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, white);
+        opacity: 0;
+        transform: rotate(45deg);
+        animation: caer 8s linear infinite;
+    }
+
+    /* Varias estrellas fugaces con distintos delays */
+    .primera{
+        animation-delay: 1s;
+        top: 160px;
+        left: -50px;
+        rotate: 25deg;
+    }
+
+    .segunda {
+        animation-delay: 3s;
+        top: 70vh;
+        left: 100px;
+        rotate: -10deg;
+    }
+
+    .tercera {
+        animation-delay: 5s;
+        top: 50vh;
+        left: 20vw;
+        rotate: 10deg;
+    }
+
+    /* Animación de caída */
+    @keyframes caer {
+        0% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        1% {
+            opacity: 0.9;
+        }
+
+        3% {
+            opacity: 0.7;
+        }
+
+        4% {
+            opacity: 0.4;
+        }
+
+        5% {
+            opacity: 0.2;
+            transform: translate(450px, 0px);}
+
+        6% {
+            opacity: 0.1;
+        }
+
+        10% {
+            opacity: 0;
+            transform: translate(900px, 0px);
+        }
+    }
+
+    .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border-radius: -50px;
+        background: radial-gradient(2px 2px at 20px 30px, white, transparent) repeat,
+            radial-gradient(2px 2px at 100px 20px, rgb(242, 216, 86), transparent) repeat,
+            radial-gradient(1.5px 1.5px at 40px 300px, white, transparent) repeat,
+            radial-gradient(2px 2px at 280px 160px, rgb(235, 244, 140), transparent) repeat,
+            radial-gradient(2px 2px at 160px 40px, white, transparent) repeat,
+            radial-gradient(2px 2px at 250px 120px, rgb(231, 185, 99), transparent) repeat,
+            radial-gradient(2px 2px at 175px 100px, white, transparent) repeat;
+            
+        background-size: 400px 400px;
+        animation: moverEstrellas 20s ease-in-out infinite alternate;
+        z-index: -2;
+    }
+
+    /* Capa de estrellas más pequeñas, movimiento aún más lento */
+    .stars2 {
+        border-radius: -50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(1px 1px at 50px 70px, white, transparent) repeat,
+            radial-gradient(1.5px 1.5px at 150px 250px, rgb(191, 191, 212), transparent) repeat,
+            radial-gradient(2px 2px at 250px 120px, white, transparent) repeat,
+            radial-gradient(2px 2px at 50px 120px, rgb(248, 179, 100), transparent) repeat,
+            radial-gradient(2px 2px at 250px 30px, white, transparent) repeat,
+            radial-gradient(2px 2px at 200px 180px, rgb(245, 219, 50), transparent) repeat,
+            radial-gradient(2px 2px at 55px 80px, white, transparent) repeat,
+            radial-gradient(1px 1px at 350px 300px, white, transparent) repeat;
+        background-size: 500px 500px;
+        animation: parpadear 1s infinite ease-in-out alternate;
+        z-index: -1;
+    }
+
+    /* Estrellas parpadeando */
+    .twinkling {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        background: transparent;
+        box-shadow:
+            50px 100px white,
+            150px 200px white,
+            250px 300px white,
+            400px 120px rgb(221, 15, 15),
+            600px 220px white,
+            800px 150px white,
+            1000px 250px white,
+            1200px 300px white,
+            1400px 100px white;
+        animation: parpadear 1s infinite ease-in-out alternate;
+        z-index: -1;
+    }
+
+    /* Movimiento lento de fondo */
+    @keyframes moverEstrellas {
+        from {
+            transform: translate(0, 0);
+        }
+
+        to {
+            transform: translate(-200px, -200px);
+        }
+    }
+
+    /* Parpadeo */
+    @keyframes parpadear {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .ramo {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        position: relative;
+    }
+
+    .flor {
+        position: relative;
+        width: 120px;
+        height: 200px;
+        opacity: 0;
+        transform: translateY(200px) scale(0.5);
+        animation: aparecer 2s ease forwards;
+    }
+
+    /* Animaciones con delays */
+    .flor:nth-child(1) {
+        transform: rotate(-20deg) translateY(200px) scale(0.5);
+        animation-delay: 0.2s;
+    }
+
+    .flor:nth-child(2) {
+        transform: rotate(-10deg) translateY(200px) scale(0.5);
+        animation-delay: 0.4s;
+    }
+
+    .flor:nth-child(3) {
+        transform: rotate(0deg) translateY(200px) scale(0.5);
+        animation-delay: 0.6s;
+    }
+
+    .flor:nth-child(4) {
+        transform: rotate(10deg) translateY(200px) scale(0.5);
+        animation-delay: 0.8s;
+    }
+
+    .flor:nth-child(5) {
+        transform: rotate(20deg) translateY(200px) scale(0.5);
+        animation-delay: 1s;
+    }
+
+    /* Tallo */
+    .tallo {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 12px;
+        height: 130px;
+        background: rgba(0, 128, 0, 0.629);
+        transform: translateX(-50%);
+        border-radius: 6px;
+        z-index: -1;
+    }
+
+    /* Centro de la flor */
+    .centro {
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        background: yellow;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    /* Pétalos tipo lágrima (D) */
+    .petalo {
+        position: absolute;
+        width: 50px;
+        height: 80px;
+        background: rgb(255, 0, 43);
+        border-radius: 50px 50px 0 0;
+        /* forma de lágrima */
+        top: 10px;
+        left: 50%;
+        transform-origin: bottom center;
+    }
+    
+    .ramo .flor:hover {
+        transform: scale(1.5);
+        transition: transform 0.3s;
+    }
+
+    .ramo .flor:hover .petalo {
+        background: lightcoral;
+        transition: background 0.7s;
+    }
+
+    /* Varios pétalos girados en círculo */
+    .petalo1 {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    .petalo2 {
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .petalo3 {
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    .petalo4 {
+        transform: translateX(-50%) rotate(135deg);
+    }
+
+    .petalo5 {
+        transform: translateX(-50%) rotate(180deg);
+    }
+
+    .petalo6 {
+        transform: translateX(-50%) rotate(225deg);
+    }
+
+    .petalo7 {
+        transform: translateX(-50%) rotate(270deg);
+    }
+
+    .petalo8 {
+        transform: translateX(-50%) rotate(315deg);
+    }
+
+    /* Animación de entrada */
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(200px) scale(0.1);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="twinkling"></div>
+
+    <div class="shooting-star primera"></div>
+    <div class="shooting-star segunda"></div>
+    <div class="shooting-star tercera"></div>
+
+    <div class="ramo">
+        <div class="flor">
+            <div class="tallo"></div>
+            <div class="petalo petalo1"></div>
+            <div class="petalo petalo2"></div>
+            <div class="petalo petalo3"></div>
+            <div class="petalo petalo4"></div>
+            <div class="petalo petalo5"></div>
+            <div class="petalo petalo6"></div>
+            <div class="petalo petalo7"></div>
+            <div class="petalo petalo8"></div>
+            <div class="centro"></div>
+        </div>
+
+        <div class="flor">
+            <div class="tallo"></div>
+            <div class="petalo petalo1"></div>
+            <div class="petalo petalo2"></div>
+            <div class="petalo petalo3"></div>
+            <div class="petalo petalo4"></div>
+            <div class="petalo petalo5"></div>
+            <div class="petalo petalo6"></div>
+            <div class="petalo petalo7"></div>
+            <div class="petalo petalo8"></div>
+            <div class="centro"></div>
+        </div>
+
+        <div class="flor">
+            <div class="tallo"></div>
+            <div class="petalo petalo1"></div>
+            <div class="petalo petalo2"></div>
+            <div class="petalo petalo3"></div>
+            <div class="petalo petalo4"></div>
+            <div class="petalo petalo5"></div>
+            <div class="petalo petalo6"></div>
+            <div class="petalo petalo7"></div>
+            <div class="petalo petalo8"></div>
+            <div class="centro"></div>
+        </div>
+
+        <div class="flor">
+            <div class="tallo"></div>
+            <div class="petalo petalo1"></div>
+            <div class="petalo petalo2"></div>
+            <div class="petalo petalo3"></div>
+            <div class="petalo petalo4"></div>
+            <div class="petalo petalo5"></div>
+            <div class="petalo petalo6"></div>
+            <div class="petalo petalo7"></div>
+            <div class="petalo petalo8"></div>
+            <div class="centro"></div>
+        </div>
+
+        <div class="flor">
+            <div class="tallo"></div>
+            <div class="petalo petalo1"></div>
+            <div class="petalo petalo2"></div>
+            <div class="petalo petalo3"></div>
+            <div class="petalo petalo4"></div>
+            <div class="petalo petalo5"></div>
+            <div class="petalo petalo6"></div>
+            <div class="petalo petalo7"></div>
+            <div class="petalo petalo8"></div>
+            <div class="centro"></div>
+        </div>
+    </div>
+</body>
+
+</html>
